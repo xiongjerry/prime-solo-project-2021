@@ -33,9 +33,10 @@ function AddReader() {
         goal: goal,
         reward: reward
       }
-    
+      console.log('new Reader', newReader);
+
       dispatch({
-          type: 'SET_READERS',
+          type: 'ADD_READER',
           payload: newReader
       })
       setName('');
