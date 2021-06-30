@@ -20,7 +20,15 @@ function UserPage() {
       <h3>Your Read-Stars!</h3>
 
       <ul>
-
+        {readerList.map (reader => {
+          return (
+            <li key={reader.id}>
+              <p>Reader: {reader.reader_name}</p>
+              <p>Books Left to Read! {reader.goal}</p>
+              <p>Prize: {reader.reward}</p>
+            </li>
+          )
+        })}
       </ul>
 
     </div>
