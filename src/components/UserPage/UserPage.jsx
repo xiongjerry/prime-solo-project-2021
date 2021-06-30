@@ -1,5 +1,4 @@
 import React from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 
 function UserPage() {
@@ -8,8 +7,10 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
-      <LogOutButton className="btn" />
+      {/* <p>Your ID is: {user.id}</p> */}
+      <h3>Your Read-Stars!</h3>
+
+
     </div>
   );
 }
