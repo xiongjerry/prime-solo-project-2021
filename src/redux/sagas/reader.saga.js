@@ -9,7 +9,7 @@ function* addReader(action) {
   try{
     yield axios.post('/api/reader', action.payload);
     // reset state to update from dom
-    // yield put({type: "FETCH_READER"});
+    yield put({type: "FETCH_READER"});
   }
 
   catch (error) {
@@ -17,9 +17,26 @@ function* addReader(action) {
   }
 }
 
+// GET Readers from DB
+export function* fetchReaders() {
+    try {
+        console.log('');
+      //take every fetch items, call a fetch items function. 
+      const response = yield axios.get('/api/reader')
+  
+      yield put({type: 'SET_READERS', payload: response.data});
+      }
+  
+     catch (error) {
+      console.log('User get request failed', error);
+    }
+}
+
+
 
 export function* readerSaga() {
   yield takeLatest('ADD_READER', addReader);
+  yield takeLatest('FETCH_READER', fetchReaders)
 }
 
 
