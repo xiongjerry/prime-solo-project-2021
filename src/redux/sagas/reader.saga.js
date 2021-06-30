@@ -36,7 +36,7 @@ export function* fetchReaders() {
 
 export function* readerSaga() {
   yield takeLatest('ADD_READER', addReader);
-  yield takeLatest('FETCH_READER', fetchReaders)
+  yield takeLatest('FETCH_READERS', fetchReaders)
 }
 
 
