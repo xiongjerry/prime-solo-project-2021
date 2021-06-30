@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 function UserPage() {
-  
+
   const dispatch = useDispatch()
   const user = useSelector((store) => store.user);
   const readerList = useSelector((store) => store.readerList)
   console.log(`User's reader list`, readerList)
   
   useEffect(() => {
-    dispatch({ type: 'FETCH_READERS' });
+    dispatch({ type: 'FETCH_READERS', payload: user.id });
   }, [])
 
 

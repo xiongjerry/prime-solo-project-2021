@@ -6,7 +6,12 @@ const router = express.Router();
  * GET route reader_info DB
  */
 router.get('/', (req, res) => {
-  pool.query('SELECT * FROM "reader_info" ORDER BY "id" DESC;').then((result) => {
+
+  console.log('user id',req.query);
+
+  pool.query(`SELECT * FROM "reader_info" WHERE "parent_id"=${req.query.userId} ORDER BY "id" DESC;`)
+  
+  .then((result) => {
     res.send(result.rows);
   }).catch((error) => {
     console.log('Error GET /api/reader', error);
