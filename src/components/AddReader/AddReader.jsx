@@ -3,11 +3,14 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function AddReader() {
 
   const dispatch = useDispatch();
+  // Fetching id for User to input into dispatch
+  const user = useSelector((store) => store.user);
+
   const [name, setName] = useState('');
   const [goal, setGoal] = useState(0);
   const [reward, setReward] = useState('');
@@ -31,7 +34,8 @@ function AddReader() {
       const newReader = {
         name: name,
         goal: goal,
-        reward: reward
+        reward: reward,
+        user: user.id
       }
       console.log('new Reader', newReader);
 
@@ -39,7 +43,10 @@ function AddReader() {
           type: 'ADD_READER',
           payload: newReader
       })
+      //reset inputs after submission
       setName('');
+      setGoal(1);
+      setReward('');
     }
 
   return (

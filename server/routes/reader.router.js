@@ -18,11 +18,11 @@ router.get('/', (req, res) => {
  * POST route reader_info DB
  */
 router.post('/', (req, res) => {
-  let newReader = req.body;
-  console.log(`Adding New Reader`, newReader);
-  let queryText = `INSERT INTO "reader_info" ("reader_name", "goal", "reward")
-                 VALUES ($1, $2, $3);`;
-  pool.query(queryText, [newReader])
+  console.log('request info', req.body)
+  let newReader = req.body
+  let queryText = `INSERT INTO "reader_info" ("reader_name", "goal", "reward", "parent_id")
+                 VALUES ($1, $2, $3, $4);`;
+  pool.query(queryText, [newReader.name, newReader.goal, newReader.reward, newReader.user])
     .then(result => {
       res.sendStatus(201);
     })
