@@ -106,7 +106,6 @@ function App() {
           <ProtectedRoute
             exact
             path="/readerTrack"
-            authRedirect="/user"
           >
             <ReaderTrack />
           </ProtectedRoute>

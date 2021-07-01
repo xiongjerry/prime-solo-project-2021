@@ -16,10 +16,10 @@ function UserPage() {
 
   // goes to reader track page on click
   const handleReaderTrack = (reader) => {
-    console.log('Clicked on Read-Star:', reader.reader_name, reader)
+    console.log('Clicked on Read-Star:', reader.reader_name, reader);
     // send selected reader info through into reducer
-    dispatch({type: 'FETCH_SELECTED_READER', payload: reader})
-    history.push('/readerTrack')
+    dispatch({type: 'FETCH_SELECTED_READER', payload: reader});
+    history.push('/readerTrack');
     };
 
 
