@@ -1,6 +1,6 @@
-const readerList = (state = [], action) => {
+const selectedReader = (state = [], action) => {
     switch (action.type) {
-      case 'SET_READERS':
+      case 'SET_SELECTED_READER':
         return action.payload;
         
       default:
@@ -9,4 +9,4 @@ const readerList = (state = [], action) => {
   };
   
  
-  export default readerList;
+  export default selectedReader;
