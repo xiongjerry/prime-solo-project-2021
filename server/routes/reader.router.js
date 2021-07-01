@@ -75,7 +75,7 @@ router.put('/:id', (req, res) =>{
   pool.query(queryString, [newInput.name, newInput.goal, newInput.reward, readerId])
   .then( response => {
       console.log(response);
-      console.log(`updated reader id: ${treatsId}`);
+      console.log(`updated reader id: ${readerId}`);
       res.sendStatus(200); // confirms on client side that info updated
   }).catch((err) => {
       console.log('error in server PUT route', err);

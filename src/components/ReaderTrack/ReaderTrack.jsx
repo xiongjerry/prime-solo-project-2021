@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 
 function ReaderTrack () {
@@ -14,7 +15,8 @@ function ReaderTrack () {
 
         <h3>Goal: {selectedReader[0]?.goal}</h3>
         <h3>Reward: {selectedReader[0]?.reward}</h3>
-  
+        
+        <Button onClick={} variant="outlined">Edit</Button>
       </div>
     )
 }
