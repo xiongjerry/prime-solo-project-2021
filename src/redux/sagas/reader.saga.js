@@ -3,7 +3,7 @@ import axios from 'axios';
 import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
 
-// Saga Worker to add reader info into DB
+// Add reader info into DB
 function* addReader(action) {
     console.log('Info coming from client', action.payload);
 
@@ -39,11 +39,22 @@ export function* fetchReaders(action) {
     }
 }
 
-
+function* fetchSelectedReader (action) {
+    console.log('Selected Reader id from dispatch', action.payload.id);
+    try {
+        const readerId = action.payload.id
+        const response = yield axios.get(`/api/reader/${readerId}`)
+        console.log('server info', response.data);
+        yield put ({type: 'SET_SELECTED_READER', payload: response.data})
+    } catch {
+        console.log('fetch details error');
+    }
+}
 
 export function* readerSaga() {
     yield takeLatest('ADD_READER', addReader);
     yield takeLatest('FETCH_READERS', fetchReaders);
+    yield takeLatest('FETCH_SELECTED_READER', fetchSelectedReader);
 }
 
 
