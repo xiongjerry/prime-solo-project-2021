@@ -19,6 +19,7 @@ import AddReader from '../AddReader/AddReader';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import ReaderTrack from '../ReaderTrack/ReaderTrack';
 
 import './App.css';
 
@@ -102,6 +103,14 @@ function App() {
             <LandingPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            exact
+            path="/readerTrack"
+            authRedirect="/user"
+          >
+            <ReaderTrack />
+          </ProtectedRoute>
+          
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>
