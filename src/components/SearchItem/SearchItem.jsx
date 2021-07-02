@@ -7,10 +7,16 @@ function SearchItem( { book }) {
 
     const title = book.volumeInfo.title;
     const author = book.volumeInfo.authors
-    let bookUrl = book.volumeInfo.imageLinks.thumbnail;
+    const bookUrl = book.volumeInfo.imageLinks.thumbnail;
+
+    const selectedBook = {
+        title: title,
+        bookImg: bookUrl,
+        author: author
+    }
     
     const handleClick = () => {
-        dispatch({type: 'ADD_BOOK', payload: book})
+        dispatch({type: 'ADD_BOOK', payload: selectedBook})
     }
 
 return (

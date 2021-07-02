@@ -20,7 +20,18 @@ router.get('/', (req, res) => {
 
 // Booklist POST route
 router.post('/', (req, res) => {
-  // POST route code here
+  console.log('request Book info', req.body)
+  let newBook = req.body
+  let queryText = `INSERT INTO "book_list" ("book_title", "book_img", "author")
+                 VALUES ($1, $2, $3);`;
+  pool.query(queryText, [newBook.title, newBook.bookUrl, newBook.author])
+    .then(result => {
+      res.sendStatus(201);
+    })
+    .catch(error => {
+      console.log(`Error adding new Book`, error);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;
