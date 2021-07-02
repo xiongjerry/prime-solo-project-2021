@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 import EditReaderForm from '../EditReaderForm/EditReaderForm';
+import BookList from '../BookList/BookList';
 
 function ReaderTrack() {
 
@@ -112,8 +113,17 @@ function ReaderTrack() {
                     </>}
                     handleClose={toggleEditForm}
                 />}
+
             </main>
 
+            <div>
+                <p>GOAL PROGRESS BAR</p>
+            </div>
+
+            <div>
+                <p>BOOKS LIST</p>
+                <BookList />
+            </div>
         </div>
     )
 }
