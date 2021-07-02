@@ -5,16 +5,15 @@ import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 function* fetchResults(action) {
     console.log('search query is',action.payload)
     try {
-      const response = yield axios.get("/random", {
+      const response = yield axios.get("/api/booklist", {
         params: {
           search: action.payload,
         },
       });
+
       yield console.log("fetching search results", response);
-      yield put({
-        type: "SET_RESULTS",
-        payload: response.data,
-      });
+
+      yield put({type: "SET_RESULTS",payload: response.data,});
     } catch (error) {
       console.error("error with Book Results GET request", error);
     }

@@ -3,6 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import readerList from './reader.reducer';
 import selectedReader from './selectedReader.reducer';
+import searchResults from './books.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   readerList, // contains reader info (name, goal, reward, parent_id)
-  selectedReader
+  selectedReader,
+  searchResults
 });
 
 export default rootReducer;
