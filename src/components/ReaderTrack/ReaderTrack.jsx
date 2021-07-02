@@ -123,6 +123,8 @@ function ReaderTrack() {
             <div>
                 <p>BOOKS LIST</p>
                 <BookList />
+
+                <Button onClick={() => {history.push('/bookSearch')}} variant="outlined">Look For a Book!</Button>
             </div>
         </div>
     )
