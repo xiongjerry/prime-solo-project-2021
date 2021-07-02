@@ -12,6 +12,17 @@ function BookSearch() {
         setSearchQuery(event.target.value)
     }
 
+    useEffect(() => {
+    }, [])
+  
+    const handleSubmit = event => {
+      event.preventDefault()
+      dispatch({
+        type: 'FETCH_RESULTS',
+        payload: searchQuery
+      })
+      setSearchQuery('')
+    }
 
     return (
         <div className="container">
