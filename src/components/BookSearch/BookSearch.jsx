@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField';
 
 function BookSearch() {
 
+    const dispatch = useDispatch();
+    const history = useHistory();
     const [searchQuery, setSearchQuery] = useState('')
 
     const handleChange = (event) => {
