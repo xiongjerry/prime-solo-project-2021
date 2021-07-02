@@ -58,10 +58,10 @@ router.post('/', (req, res) => {
 
 // PUT route to update info
 router.put('/:id', (req, res) =>{
-  const readerId = req.params.id;
+  const readerId = req.body.reader_id;
   console.log('reader edits to update:', readerId);
 
-  console.log(req.body); // use console to see the info coming in
+  console.log('info from PUT route',req.body); // use console to see the info coming in
   const newInput = req.body
 
   const queryString =
