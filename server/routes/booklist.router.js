@@ -7,14 +7,14 @@ router.get('/', (req, res) => {
 
   // console.log('user id',req.query);
   
-  // pool.query(`SELECT * FROM "reader_info" WHERE "parent_id"=${req.query.userId} ORDER BY "id" DESC;`)
+  pool.query(`SELECT * FROM "books_list" ORDER BY "id" DESC;`)
     
-  // .then((result) => {
-  //   res.send(result.rows);
-  // }).catch((error) => {
-  //   console.log('Error GET /api/booklist', error);
-  //   res.sendStatus(500);
-  // });
+  .then((result) => {
+    res.send(result.rows);
+  }).catch((error) => {
+    console.log('Error GET /api/booklist', error);
+    res.sendStatus(500);
+  });
 });
   
 
@@ -22,9 +22,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   console.log('request Book info', req.body)
   let newBook = req.body
-  let queryText = `INSERT INTO "book_list" ("book_title", "book_img", "author")
+  let queryText = `INSERT INTO "books_list" ("book_title", "book_img", "author")
                  VALUES ($1, $2, $3);`;
-  pool.query(queryText, [newBook.title, newBook.bookUrl, newBook.author])
+  pool.query(queryText, [newBook.title, newBook.bookImg, newBook.author])
     .then(result => {
       res.sendStatus(201);
     })

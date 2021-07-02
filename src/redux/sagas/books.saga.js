@@ -19,13 +19,12 @@ function* fetchResults(action) {
 }
 
 // Add Book info into DB via POST
-function* addBook () {
+function* addBook (action) {
     console.log('Book Info sent', action.payload);
 
     try {
         yield axios.post('/api/booklist', action.payload);
-        // reset state to update from dom
-        yield put({ type: "FETCH_READERS" });
+
     }
 
     catch (error) {
