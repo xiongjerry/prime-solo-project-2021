@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 
-
+// Google Books API GET request
 function* fetchResults(action) {
     console.log('search query is:',action.payload)
     try {
@@ -16,10 +16,17 @@ function* fetchResults(action) {
     } catch (error) {
       console.error("error with Book Results GET request", error);
     }
-  }
+}
+
+// Add Book info into DB via POST
+function* addBook () {
+
+}
+
 
 export function* booksSaga() {
     yield takeLatest('FETCH_RESULTS', fetchResults);
+    yield takeLatest('ADD_BOOK', addBook)
 }
 
 
