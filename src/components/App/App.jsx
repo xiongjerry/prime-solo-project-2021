@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ReaderTrack from '../ReaderTrack/ReaderTrack';
+import BookSearch from '../BookSearch/BookSearch';
 
 import './App.css';
 
@@ -109,7 +110,14 @@ function App() {
           >
             <ReaderTrack />
           </ProtectedRoute>
-          
+
+          <ProtectedRoute
+            exact
+            path="/bookSearch"
+          >
+            <BookSearch />
+          </ProtectedRoute>
+
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>
