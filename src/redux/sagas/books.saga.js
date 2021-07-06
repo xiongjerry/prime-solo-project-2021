@@ -32,10 +32,32 @@ function* addBook (action) {
     }
 }
 
+// GET request from books DB
+export function* fetchBooks(action) {
+
+    // console.log('user id:', action.payload);
+    // const userId = action.payload
+
+    try {
+        const response = yield axios.get('/api/booklist'
+        //,{params:{
+        //     userId: userId
+        //  }
+        // })
+        )
+        //take readers input and insert into readerList reducer
+        yield put({ type: 'SET_BOOKS', payload: response.data });
+    }
+
+    catch (error) {
+        console.log('User get request failed', error);
+    }
+}
 
 export function* booksSaga() {
     yield takeLatest('FETCH_RESULTS', fetchResults);
     yield takeLatest('ADD_BOOK', addBook)
+    yield takeLatest('FETCH_BOOKS', fetchBooks)
 }
 
 

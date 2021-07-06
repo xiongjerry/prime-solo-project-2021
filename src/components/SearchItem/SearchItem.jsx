@@ -17,6 +17,7 @@ function SearchItem( { book }) {
     
     const handleClick = () => {
         dispatch({type: 'ADD_BOOK', payload: selectedBook})
+        alert('Book Added to Reader');
     }
 
 return (

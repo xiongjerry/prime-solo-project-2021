@@ -6,8 +6,10 @@ function UserPage() {
 
   const history = useHistory();
   const dispatch = useDispatch();
+
   const user = useSelector((store) => store.user);
   const readerList = useSelector((store) => store.readerList)
+  
   console.log(`User's reader list`, readerList)
   
   useEffect(() => {

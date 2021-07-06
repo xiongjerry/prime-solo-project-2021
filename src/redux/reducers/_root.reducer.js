@@ -4,6 +4,7 @@ import user from './user.reducer';
 import readerList from './reader.reducer';
 import selectedReader from './selectedReader.reducer';
 import searchResults from './books.reducer';
+import bookList from './booklist.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   readerList, // contains reader info (name, goal, reward, parent_id)
   selectedReader,
-  searchResults
+  searchResults,
+  bookList
 });
 
 export default rootReducer;
