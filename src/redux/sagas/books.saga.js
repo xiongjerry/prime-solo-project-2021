@@ -35,16 +35,16 @@ function* addBook (action) {
 // GET request from books DB
 export function* fetchBooks(action) {
 
-    // console.log('user id:', action.payload);
-    // const userId = action.payload
+    console.log('reader id:', action.payload);
+    const readerId = action.payload
 
     try {
         const response = yield axios.get('/api/booklist'
-        //,{params:{
-        //     userId: userId
-        //  }
-        // })
-        )
+        ,{params:{
+            userId: userId
+         }
+        })
+       
         //take readers input and insert into readerList reducer
         yield put({ type: 'SET_BOOKS', payload: response.data });
     }

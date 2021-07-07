@@ -5,11 +5,17 @@ function BookList() {
 
     const dispatch = useDispatch();
     const bookList = useSelector((store) => store.bookList);
+    const selectedReader = useSelector((store) => store.selectedReader)
+
+    const readerId = selectedReader.id
 
     console.log('book list', bookList)
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_BOOKS' });
+        dispatch({
+            type: 'FETCH_BOOKS',
+            payload: readerId
+        });
     }, [])
 
     return (

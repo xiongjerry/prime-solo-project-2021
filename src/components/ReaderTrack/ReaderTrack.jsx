@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import EditReaderForm from '../EditReaderForm/EditReaderForm';
 import BookList from '../BookList/BookList';
@@ -12,8 +13,38 @@ function ReaderTrack() {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    const [name, setName] = useState();
+    const [goal, setGoal] = useState();
+    const [reward, setReward] = useState();
+    const [readerId, setReaderId] = useState();
+
     const selectedReader = useSelector((store) => store.selectedReader)
-    console.log('reader info', selectedReader)
+    console.log('selected reader info', selectedReader)
+
+
+    const load = async () => {
+        try {
+            let jsonValue = await AsyncStorage.getItem('SelectedReader')
+
+            let parsed = JSON.parse(jsonValue);
+
+            setName(parsed.reader_name);
+            setGoal(parsed.goal);
+            setReward(parsed.reward);
+            setReaderId(parsed.id)
+
+        } catch (err) {
+            alert(err);
+        }
+    }
+
+    console.log(load());
+
+    useEffect(() => {
+        // save(), 
+        load()
+      }, [])
+
 
     // edit button functionality
     const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -60,10 +91,10 @@ function ReaderTrack() {
 
     return (
         <div className="container">
-            <h2>{selectedReader[0]?.reader_name}'s Track</h2>
+            <h2>{name}'s Track</h2>
 
-            <h3>Goal: {selectedReader[0]?.goal}</h3>
-            <h3>Reward: {selectedReader[0]?.reward}</h3>
+            <h3>Goal: {goal}</h3>
+            <h3>Reward: {reward}</h3>
 
             <main>
                 <input

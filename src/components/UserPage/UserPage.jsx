@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import AsyncStorage from '@react-native-community/async-storage';
 
 function UserPage() {
 
@@ -17,18 +18,25 @@ function UserPage() {
   }, [])
 
   // goes to reader track page on click
-  const handleReaderTrack = (reader) => {
+  const handleReaderTrack = async (reader) => {
     console.log('Clicked on Read-Star:', reader.reader_name, reader);
     // send selected reader info through into reducer
     dispatch({type: 'FETCH_SELECTED_READER', payload: reader});
-    history.push('/readerTrack');
+
+      try {
+          await AsyncStorage.setItem("SelectedReader", JSON.stringify(reader));
+      } catch (err) {
+          console.log(err);
+      }
+  
+      history.push('/readerTrack');
     };
 
 
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-      {/* <p>Your ID is: {user.id}</p> */}
+
       <h3>Your Read-Stars!</h3>
 
       <ul>
