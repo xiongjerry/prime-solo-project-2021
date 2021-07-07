@@ -34,14 +34,13 @@ function ReaderTrack() {
             setReaderId(parsed.id)
 
         } catch (err) {
-            alert(err);
+            console.log('async', err);
         }
     }
 
     console.log(load());
 
     useEffect(() => {
-        // save(), 
         load()
       }, [])
 

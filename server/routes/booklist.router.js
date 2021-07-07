@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
   let newBook = req.body
   let queryText = `INSERT INTO "books_list" ("book_title", "book_img", "author", "reader_id")
                  VALUES ($1, $2, $3, $4);`;
-  pool.query(queryText, [newBook.title, newBook.bookImg, newBook.author, newBook.readerId])
+  pool.query(queryText, [newBook.title, newBook.bookImg, newBook.author, newBook.id])
     .then(result => {
       res.sendStatus(201);
     })
