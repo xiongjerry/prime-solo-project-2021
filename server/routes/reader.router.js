@@ -1,10 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 // get selected reader info
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
   const readerId = req.params.id
   console.log('reader id', req.params.id);
 
@@ -24,7 +26,7 @@ router.get('/:id', (req, res) => {
 /**
  * GET route reader_info DB
  */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
 
   console.log('user id',req.query);
 
@@ -41,7 +43,7 @@ router.get('/', (req, res) => {
 /**
  * POST route reader_info DB
  */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('request info', req.body)
   let newReader = req.body
   let queryText = `INSERT INTO "reader_info" ("reader_name", "goal", "reward", "parent_id")
@@ -57,7 +59,7 @@ router.post('/', (req, res) => {
 });
 
 // PUT route to update info
-router.put('/:id', (req, res) =>{
+router.put('/:id', rejectUnauthenticated, (req, res) =>{
   const readerId = req.body.reader_id;
   console.log('reader edits to update:', readerId);
 

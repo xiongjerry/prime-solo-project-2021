@@ -35,13 +35,13 @@ function* addBook (action) {
 // GET request from books DB
 export function* fetchBooks(action) {
 
-    console.log('reader id:', action.payload);
+    console.log('saga reader id:', action.payload);
     const readerId = action.payload
 
     try {
-        const response = yield axios.get('/api/booklist'
-        ,{params:{
-            userId: userId
+        const response = yield axios.get('/api/booklist',
+        {params:{
+            readerId: readerId
          }
         })
        

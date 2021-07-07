@@ -18,7 +18,14 @@ function ReaderTrack() {
     const [reward, setReward] = useState();
     const [readerId, setReaderId] = useState();
 
-    const selectedReader = useSelector((store) => store.selectedReader)
+    const selectedReader = {
+        name: name,
+        goal: goal,
+        reward: reward,
+        readerId: readerId
+    }
+
+    // const selectedReader = useSelector((store) => store.selectedReader)
     console.log('selected reader info', selectedReader)
 
 
@@ -151,8 +158,7 @@ function ReaderTrack() {
             </div>
 
             <div>
-                <p>BOOKS LIST</p>
-                <BookList />
+                <BookList selectedReader={selectedReader}/>
 
                 <Button onClick={() => {history.push('/bookSearch')}} variant="outlined">Look For a Book!</Button>
             </div>
