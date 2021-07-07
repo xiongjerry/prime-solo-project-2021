@@ -2,20 +2,23 @@ import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react';
 
 
-function BookList ({ selectedReader }) {
+function BookList ({ readerId }) {
 
     const dispatch = useDispatch();
     const bookList = useSelector((store) => store.bookList);
 
-    console.log('readerId', selectedReader.readerId)
-    console.log('book list', bookList)
-
+    console.log('readerId', readerId)
+    
+    if(readerId !== null) {
+        console.log('book list', bookList)
+    }
+    
     useEffect(() => {
         dispatch({
             type: 'FETCH_BOOKS',
-            payload: selectedReader.readerId
+            payload: readerId
         })
-    }, [])
+    }, [readerId])
 
     return (
         <div className="container">

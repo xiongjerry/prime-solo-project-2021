@@ -18,15 +18,15 @@ function ReaderTrack() {
     const [reward, setReward] = useState();
     const [readerId, setReaderId] = useState();
 
-    const selectedReader = {
+    const reader = {
         name: name,
         goal: goal,
         reward: reward,
         readerId: readerId
     }
 
-    // const selectedReader = useSelector((store) => store.selectedReader)
-    console.log('selected reader info', selectedReader)
+    const selectedReader = useSelector((store) => store.selectedReader)
+    console.log('reader info', reader)
 
 
     const load = async () => {
@@ -101,6 +101,7 @@ function ReaderTrack() {
 
             <h3>Goal: {goal}</h3>
             <h3>Reward: {reward}</h3>
+            <h3>Reader ID: {readerId}</h3>
 
             <main>
                 <input
@@ -120,7 +121,6 @@ function ReaderTrack() {
                                 variant="outlined"
                                 value={newName}
                                 onChange={handleChangeName}
-                                required
                             />
 
                             <TextField
@@ -132,7 +132,6 @@ function ReaderTrack() {
                                 }}
                                 variant="filled"
                                 onChange={handleChangeGoal}
-                                required
                             />
 
                             <TextField
@@ -141,7 +140,6 @@ function ReaderTrack() {
                                 variant="outlined"
                                 value={newReward}
                                 onChange={handleChangeReward}
-                                required
                             />
 
                             <Button type="submit" variant="outlined">Submit Changes</Button>
@@ -158,7 +156,7 @@ function ReaderTrack() {
             </div>
 
             <div>
-                <BookList selectedReader={selectedReader}/>
+                <BookList readerId={readerId} />
 
                 <Button onClick={() => {history.push('/bookSearch')}} variant="outlined">Look For a Book!</Button>
             </div>
