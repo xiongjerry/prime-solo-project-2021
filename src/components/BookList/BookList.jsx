@@ -41,6 +41,8 @@ function BookList ({ readerId }) {
     } // end handleDelete
 
     function handleUpdate (id) {
+        console.log('clicked on handleUpadate')
+
         dispatch ({
             type: 'UPDATE_BOOK',
             payload: {

@@ -50,8 +50,8 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
 // Booklist PUT Route to mark when book is read
 router.put('/:id', rejectUnauthenticated, (req, res) =>{
-  const bookId = req.body.id;
-  console.log('book to update:', bookId);
+  const bookId = req.body.params.id;
+  console.log('book id to update:', req.body.params.id);
 
   const queryString =
   `UPDATE "books_list"

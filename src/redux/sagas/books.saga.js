@@ -53,10 +53,10 @@ export function* fetchBooks(action) {
     }
 }
 
-// DELETE Route for DB
+// DELETE Route for booklist DB
 export function* deleteBook (action) {
     const id = action.payload.bookId
-    console.log('book id to delete', action.payload)
+    console.log('book id to delete', action.payload.bookId)
 
     try {
         yield axios.delete(`/api/booklist/${id}`,
@@ -72,12 +72,32 @@ export function* deleteBook (action) {
     }
 }
 
+// PUT route for booklist DB
+export function* updateBook (action) {
+    try {
+        const id = action.payload.bookId
+        console.log('book id to update', action.payload.bookId)
+
+        yield axios.put(`/api/booklist/${id}`,
+        {params:{
+            id: id
+         }
+        })
+        // update book list after update
+        yield put({type: 'FETCH_BOOKS', payload: action.payload.readerId})
+    }
+    catch (error) {
+        console.log('User get request failed', error);
+    }
+}
+
 
 export function* booksSaga() {
     yield takeLatest('FETCH_RESULTS', fetchResults);
     yield takeLatest('ADD_BOOK', addBook);
     yield takeLatest('FETCH_BOOKS', fetchBooks);
     yield takeLatest('DELETE_BOOK', deleteBook);
+    yield takeLatest('UPDATE_BOOK', updateBook);
 }
 
 
