@@ -22,13 +22,22 @@ function BookList ({ readerId }) {
 
     function handleDelete (id) {
         console.log('book id to delete', id)
-        dispatch({
+
+        let confirmAction = confirm("Are you sure you want to delete this book?");
+        if (confirmAction) {
+          alert("Book Deleted");
+         
+          dispatch({
             type: 'DELETE_BOOK',
             payload: {
                 bookId: id,
                 readerId: readerId
             }
         })
+        } else {
+          alert("Delete canceled");
+        
+        } // End if statement
     }
 
     return (
@@ -42,6 +51,8 @@ function BookList ({ readerId }) {
                             <h3>By: {book.author}</h3>
                             <img src={book.book_img} alt="searched Book results" width="300px"></img>
 
+                            <Button onClick={() => handleUpdate(book.id)} variant="outlined">Completed Book!</Button>
+                            
                             <Button onClick={() => handleDelete(book.id)} variant="outlined">Delete Book</Button>
                         </li>
                     )
