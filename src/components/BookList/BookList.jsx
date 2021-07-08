@@ -37,7 +37,17 @@ function BookList ({ readerId }) {
         } else {
           alert("Delete canceled");
         
-        } // End if statement
+        } // end if statement
+    } // end handleDelete
+
+    function handleUpdate (id) {
+        dispatch ({
+            type: 'UPDATE_BOOK',
+            payload: {
+                bookId: id,
+                readerId: readerId
+            }
+        })
     }
 
     return (
