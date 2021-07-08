@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react';
-
+import Button from '@material-ui/core/Button';
 
 function BookList ({ readerId }) {
 
@@ -20,6 +20,13 @@ function BookList ({ readerId }) {
         })
     }, [readerId])
 
+    function handleDelete () {
+        dispatch({
+            type: 'DELETE_BOOK',
+            payload: readerId
+        })
+    }
+
     return (
         <div className="container">
             <p>BOOKS TO READ</p>
@@ -30,6 +37,8 @@ function BookList ({ readerId }) {
                             <h3>{book.book_title}</h3>
                             <h3>By: {book.author}</h3>
                             <img src={book.book_img} alt="searched Book results" width="300px"></img>
+
+                            <Button onClick={handleDelete} variant="outlined">Delete Book</Button>
                         </li>
                     )
                 })}
