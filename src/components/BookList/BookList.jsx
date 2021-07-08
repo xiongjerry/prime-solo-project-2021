@@ -20,10 +20,14 @@ function BookList ({ readerId }) {
         })
     }, [readerId])
 
-    function handleDelete () {
+    function handleDelete (id) {
+        console.log('book id to delete', id)
         dispatch({
             type: 'DELETE_BOOK',
-            payload: readerId
+            payload: {
+                bookId: id,
+                readerId: readerId
+            }
         })
     }
 
@@ -38,7 +42,7 @@ function BookList ({ readerId }) {
                             <h3>By: {book.author}</h3>
                             <img src={book.book_img} alt="searched Book results" width="300px"></img>
 
-                            <Button onClick={handleDelete} variant="outlined">Delete Book</Button>
+                            <Button onClick={() => handleDelete(book.id)} variant="outlined">Delete Book</Button>
                         </li>
                     )
                 })}
