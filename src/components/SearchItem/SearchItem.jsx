@@ -29,9 +29,9 @@ function SearchItem( { book }) {
 
 
     const title = book.volumeInfo.title;
-    const author = book.volumeInfo.authors
+    const author = book.volumeInfo.authors[0];
     const bookUrl = book.volumeInfo.imageLinks.thumbnail;
-    const readerId = selectedReaderId
+    const readerId = selectedReaderId;
 
     console.log('reader id', readerId)
 
