@@ -101,7 +101,7 @@ function ReaderTrack() {
 
             <h3>Goal: {goal}</h3>
             <h3>Reward: {reward}</h3>
-            <h3>Reader ID: {readerId}</h3>
+
 
             <main>
                 <input

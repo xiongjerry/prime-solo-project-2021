@@ -31,6 +31,7 @@ function BookSearch() {
 
     return (
         <div className="container">
+            <Button variant="outlined" onClick={ () => {history.goBack()}}>Back</Button>
             <h1>Book Search</h1>
 
 
