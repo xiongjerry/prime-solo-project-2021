@@ -23,9 +23,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     })
 })
 
-/**
- * GET route reader_info DB
- */
+// GET route reader_info DB
 router.get('/', rejectUnauthenticated, (req, res) => {
 
   console.log('user id',req.query);
@@ -40,9 +38,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   });
 });
 
-/**
- * POST route reader_info DB
- */
+// POST route reader_info DB
 router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('request info', req.body)
   let newReader = req.body
