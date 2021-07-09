@@ -1,0 +1,21 @@
+img {
+    display: inline-block;
+    border: 3px solid black;
+    height: auto; width: 200px; 
+}
+
+.booklist {
+    margin: 1em;
+    display: inline-block;
+    height: 206px;
+    width: 206px;
+    flex: auto
+}
+
+h3 {
+    margin: 15px;
+}
+
+h4 {
+    margin: 15px;
+}

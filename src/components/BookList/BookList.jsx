@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import './BookList.css'
 
 function BookList({ readerId, goal }) {
 
@@ -63,19 +64,19 @@ function BookList({ readerId, goal }) {
         <div className="container">
 
             <div>
-                <h2>ROAD TO SUCCESS</h2>
+                <h2>ROAD-GOAL</h2>
 
                 <ProgressBar value={booksRead} max={goal} />
             </div>
 
-            <p>BOOKS TO READ</p>
+            <h2>BOOKS TO READ</h2>
             <ul>
                 {bookList.map(book => {
                     return (
-                        <li key={book.id}>
+                        <li key={book.id} className="booklist">
                             <h3>{book.book_title}</h3>
-                            <h3>By: {book.author}</h3>
-                            <img src={book.book_img} alt="searched Book results" width="300px"></img>
+                            <h4>By: {book.author}</h4>
+                            <img src={book.book_img} alt="searched Book results" width="300px" className="img"></img>
                             {book.completed &&
                             <h4>Finished Reading!</h4>
                             }
@@ -83,12 +84,14 @@ function BookList({ readerId, goal }) {
                             <Button 
                             onClick={() => handleUpdate(book.id)} 
                             variant="outlined"
+                            color="primary"
                             >Completed Book!
                             </Button>
 
                             <Button 
                             onClick={() => handleDelete(book.id)}
                             variant="outlined"
+                            color="secondary"
                             >Delete Book
                             </Button>
                         </li>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import AsyncStorage from '@react-native-community/async-storage';
+import './UserPage.css'
 
 function UserPage() {
 
@@ -34,17 +35,17 @@ function UserPage() {
 
   return (
     <div className="container">
-      <h2>Welcome, {user.username}!</h2>
+      <h1>Welcome To Read-Star, Captain {user.username}!</h1>
 
-      <h3>Your Read-Stars!</h3>
+      <h2>Here Are Your Read-Stars!</h2>
 
       <ul>
         {readerList.map (reader => {
           return (
-            <li key={reader.id} onClick={ () => {handleReaderTrack(reader)} }>
-              <p>Reader: {reader.reader_name}</p>
-              <p>Books Left to Read! {reader.goal}</p>
-              <p>Prize: {reader.reward}</p>
+            <li key={reader.id} onClick={ () => {handleReaderTrack(reader)} } className="list">
+              <h3>Reader: {reader.reader_name}</h3>
+              <p>Total Books to Read: {reader.goal}</p>
+              <p>Grand Prize: {reader.reward}</p>
             </li>
           )
         })}
