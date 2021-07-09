@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import EditReaderForm from '../EditReaderForm/EditReaderForm';
 import BookList from '../BookList/BookList';
+import ProgressBar from '../ProgressBar/ProgressBar';
 
 function ReaderTrack() {
 
@@ -155,6 +156,7 @@ function ReaderTrack() {
 
             <div>
                 <p>GOAL PROGRESS BAR</p>
+                <ProgressBar value={45} max={100}/>
             </div>
 
             <div>
