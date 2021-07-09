@@ -17,6 +17,7 @@ function ReaderTrack() {
     const [goal, setGoal] = useState();
     const [reward, setReward] = useState();
     const [readerId, setReaderId] = useState();
+    const [userId, setUserId] = useState();
 
     const reader = {
         name: name,
@@ -25,7 +26,7 @@ function ReaderTrack() {
         readerId: readerId
     }
 
-    const selectedReader = useSelector((store) => store.selectedReader)
+    // const selectedReader = useSelector((store) => store.selectedReader)
     console.log('reader info', reader)
 
 
@@ -39,6 +40,7 @@ function ReaderTrack() {
             setGoal(parsed.goal);
             setReward(parsed.reward);
             setReaderId(parsed.id)
+            setUserId(parsed.parent_id)
 
         } catch (err) {
             console.log('async', err);
@@ -82,8 +84,8 @@ function ReaderTrack() {
           name: newName,
           goal: newGoal,
           reward: newReward,
-          reader_id: selectedReader[0]?.id,
-          parent_id: selectedReader[0]?.parent_id
+          reader_id: readerId,
+          parent_id: userId
         }
         console.log('new Reader', newReaderInfo);
   

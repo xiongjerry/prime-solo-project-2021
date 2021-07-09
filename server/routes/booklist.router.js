@@ -9,7 +9,7 @@ const {
 // Booklist GET route
 router.get('/', rejectUnauthenticated, (req, res) => {
 
-  console.log('req.query id',req.query.readerId);
+  console.log('Booklist GET req.query.id ',req.query.readerId);
   
   pool.query(`SELECT * FROM "books_list" WHERE "reader_id"=${req.query.readerId} ORDER BY "id" DESC;`)
     

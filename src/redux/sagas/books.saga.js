@@ -31,7 +31,7 @@ function* addBook (action) {
     }
 }
 
-// GET request from books DB
+// GET request from books DB at readerId
 export function* fetchBooks(action) {
 
     console.log('saga reader id:', action.payload);

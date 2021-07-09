@@ -57,7 +57,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 // PUT route to update info
 router.put('/:id', rejectUnauthenticated, (req, res) =>{
   const readerId = req.body.reader_id;
-  console.log('reader edits to update:', readerId);
+  console.log('reader id to update:', readerId);
 
   console.log('info from PUT route',req.body); // use console to see the info coming in
   const newInput = req.body

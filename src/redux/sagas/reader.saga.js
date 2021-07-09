@@ -40,18 +40,18 @@ export function* fetchReaders(action) {
 }
 
 // fetch user info at selected ID
-export function* fetchSelectedReader (action) {
-    console.log('Selected Reader id from dispatch', action.payload.id);
-    try {
-        const readerId = action.payload.id
-        const response = yield axios.get(`/api/reader/${readerId}`)
-        console.log('server info', response.data);
-        // place user info into reducer
-        yield put ({type: 'SET_SELECTED_READER', payload: response.data})
-    } catch {
-        console.log('fetch selected Reader error');
-    }
-}
+// export function* fetchSelectedReader (action) {
+//     console.log('Selected Reader id from dispatch', action.payload.id);
+//     try {
+//         const readerId = action.payload.id
+//         const response = yield axios.get(`/api/reader/${readerId}`)
+//         console.log('server info', response.data);
+//         // place user info into reducer
+//         yield put ({type: 'SET_SELECTED_READER', payload: response.data})
+//     } catch {
+//         console.log('fetch selected Reader error');
+//     }
+// }
 
 // PUT route for editing reader_info
 export function* editReader(action) {
@@ -61,6 +61,7 @@ export function* editReader(action) {
         const changes = action.payload
 
         yield axios.put(`/api/reader/${readerId}`, changes)
+
     } catch {
         console.log('Edit Reader error');
     }
@@ -70,7 +71,7 @@ export function* editReader(action) {
 export function* readerSaga() {
     yield takeLatest('ADD_READER', addReader);
     yield takeLatest('FETCH_READERS', fetchReaders);
-    yield takeLatest('FETCH_SELECTED_READER', fetchSelectedReader);
+    // yield takeLatest('FETCH_SELECTED_READER', fetchSelectedReader);
     yield takeLatest('EDIT_READER', editReader)
 }
 

@@ -15,14 +15,13 @@ function UserPage() {
   
   useEffect(() => {
     dispatch({ type: 'FETCH_READERS', payload: user.id });
-  }, [])
+  }, [readerList])
 
   // goes to reader track page on click
   const handleReaderTrack = async (reader) => {
     console.log('Clicked on Read-Star:', reader.reader_name, reader);
-    // send selected reader info through into reducer
-    dispatch({type: 'FETCH_SELECTED_READER', payload: reader});
 
+    // save selected reader info into async storage
       try {
           await AsyncStorage.setItem("SelectedReader", JSON.stringify(reader));
       } catch (err) {
