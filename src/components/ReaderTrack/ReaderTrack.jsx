@@ -7,7 +7,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import EditReaderForm from '../EditReaderForm/EditReaderForm';
 import BookList from '../BookList/BookList';
-import ProgressBar from '../ProgressBar/ProgressBar';
 
 function ReaderTrack() {
 
@@ -112,6 +111,7 @@ function ReaderTrack() {
                     value="EDIT READER INFO"
                     onClick={toggleEditForm}
                 />
+                
                 {isPopupOpen && <EditReaderForm
                     content={<>
                         <b>Edit Reader Stats</b>
@@ -155,12 +155,7 @@ function ReaderTrack() {
             </main>
 
             <div>
-                <p>GOAL PROGRESS BAR</p>
-                <ProgressBar value={45} max={100}/>
-            </div>
-
-            <div>
-                <BookList readerId={readerId} />
+                <BookList readerId={readerId} goal={goal} />
 
                 <Button onClick={() => {history.push('/bookSearch')}} variant="outlined">Look For a Book!</Button>
             </div>

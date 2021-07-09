@@ -1,7 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const ProgressBar = ({ value, max }) => {
+
+    // ProgressBar.PropTypes = {
+    //     value: PropTypes.number.isRequired,
+    //     max: PropTypes.number
+    // };
+    
+    // ProgressBar.defaultProps = {
+    //     max: max
+    // };
+
+    console.log('books read:', value, 'AND goal:', max)
 
     const containerStyles = {
         height: 20,
@@ -13,7 +24,7 @@ const ProgressBar = ({ value, max }) => {
 
     const fillerStyles = {
         height: '100%',
-        width: `${max}%`,
+        width: `100%`,
         backgroundColor: "#78909c",
         borderRadius: 'inherit',
         textAlign: 'right'
@@ -33,15 +44,6 @@ const ProgressBar = ({ value, max }) => {
             </div>
         </div>
     )
-};
-
-ProgressBar.PropTypes = {
-    value: PropTypes.number.isRequired,
-    max: PropTypes.number
-};
-
-ProgressBar.defaultProps = {
-    max: 100
 };
 
 export default ProgressBar;
