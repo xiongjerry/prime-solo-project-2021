@@ -7,6 +7,8 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  /* background-image: url("src/img/racetrack-153686_960_720.png"); */
+  background-color: #cccccc;
 }
 
 img {
