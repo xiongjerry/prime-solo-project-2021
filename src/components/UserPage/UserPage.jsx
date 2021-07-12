@@ -84,10 +84,6 @@ function UserPage() {
               </CardContent>
             </CardActionArea>
             </Card>
-
-              {/* <h3>Reader: {reader.reader_name}</h3>
-              <p>Total Books to Read: {reader.goal}</p>
-              <p>Grand Prize: {reader.reward}</p> */}
             </li>
           )
         })}

@@ -99,13 +99,6 @@ function SearchItem({ book }) {
 
                 </CardActions>
             </Card>
-
-            {/* <p> Title: {title}</p>
-            <p> {book.volumeInfo.subtitle}</p>
-            <p> Author: {author}</p> */}
-            {/* <img src={bookUrl} alt="searched Book results" width="300px"></img> */}
-
-            {/* <Button variant="contained" onClick={handleClick}>Add to List</Button> */}
         </div>
 
     );

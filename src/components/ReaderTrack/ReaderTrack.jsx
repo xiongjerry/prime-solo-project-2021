@@ -139,12 +139,6 @@ function ReaderTrack() {
                 </CardActionArea>
             </Card>
 
-            {/* <h1>{name}'s Track</h1>
-
-            <h2>Goal: {goal}</h2>
-            <h2>Reward: {reward}</h2> */}
-
-
             <main>
                 <input
                     type="button"

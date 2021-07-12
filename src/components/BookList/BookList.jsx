@@ -129,20 +129,6 @@ function BookList({ readerId, goal }) {
                                 </CardActions>
                             </Card>
 
-                            {/* <h3>{book.book_title}</h3>
-                            <h4>By: {book.author}</h4>
-                            <img src={book.book_img} alt="searched Book results" width="300px" className="img"></img> */}
-                            {/* {book.completed &&
-                                <h4>Finished Reading!</h4>
-                            }
-
-                            <Button
-                                onClick={() => handleUpdate(book.id)}
-                                variant="outlined"
-                                color="primary"
-                            >Completed Book!
-                            </Button> */}
-
                             <Button
                                 onClick={() => handleDelete(book.id)}
                                 variant="contained" color="secondary"
