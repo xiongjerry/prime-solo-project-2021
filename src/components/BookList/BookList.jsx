@@ -1,10 +1,33 @@
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import './BookList.css'
 
+//material-ui
+
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles({
+    root: {
+        maxWidth: 450,
+    },
+    media: {
+        height: 350,
+    },
+});
+
+//material-ui
+
 function BookList({ readerId, goal }) {
+
+    const classes = useStyles();
 
     const dispatch = useDispatch();
     const bookList = useSelector((store) => store.bookList);
@@ -74,24 +97,56 @@ function BookList({ readerId, goal }) {
                 {bookList.map(book => {
                     return (
                         <li key={book.id} className="booklist">
-                            <h3>{book.book_title}</h3>
+
+                            <Card className={classes.root}>
+                                <CardActionArea>
+                                    <CardMedia
+                                        className={classes.media}
+                                        image={book.book_img}
+                                        title="Selected book"
+                                    />
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h5" component="h3">
+                                            {book.book_title}
+                                        </Typography>
+                                        <Typography variant="body2" color="textSecondary" component="p">
+                                            By: {book.author}
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                                <CardActions>
+                                    {book.completed &&
+                                        <h4>Finished Reading!</h4>
+                                    }
+
+                                    <Button
+                                        onClick={() => handleUpdate(book.id)}
+                                        variant="outlined"
+                                        color="primary"
+                                    >Finished Book!
+                                    </Button>
+
+                                </CardActions>
+                            </Card>
+
+                            {/* <h3>{book.book_title}</h3>
                             <h4>By: {book.author}</h4>
-                            <img src={book.book_img} alt="searched Book results" width="300px" className="img"></img>
-                            {book.completed &&
-                            <h4>Finished Reading!</h4>
+                            <img src={book.book_img} alt="searched Book results" width="300px" className="img"></img> */}
+                            {/* {book.completed &&
+                                <h4>Finished Reading!</h4>
                             }
 
-                            <Button 
-                            onClick={() => handleUpdate(book.id)} 
-                            variant="outlined"
-                            color="primary"
+                            <Button
+                                onClick={() => handleUpdate(book.id)}
+                                variant="outlined"
+                                color="primary"
                             >Completed Book!
-                            </Button>
+                            </Button> */}
 
-                            <Button 
-                            onClick={() => handleDelete(book.id)}
-                            variant="outlined"
-                            color="secondary"
+                            <Button
+                                onClick={() => handleDelete(book.id)}
+                                variant="contained" color="secondary"
+                                color="secondary"
                             >Delete Book
                             </Button>
                         </li>

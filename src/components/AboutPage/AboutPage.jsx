@@ -31,7 +31,8 @@ function AboutPage() {
         </ul>
       </div>
 
-      <div>Future Features</div>
+      <div></div>
+      <h1>Future Features</h1>
       <ul>
           <li>avatars for each reader</li>
           <li>pixabay api to display visual img for reward</li>

@@ -4,7 +4,32 @@ import { useHistory } from 'react-router-dom';
 import AsyncStorage from '@react-native-community/async-storage';
 import './UserPage.css'
 
+//material-ui
+
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
+
+//material-ui
+
+
 function UserPage() {
+
+  const classes = useStyles();
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -42,10 +67,27 @@ function UserPage() {
       <ul>
         {readerList.map (reader => {
           return (
-            <li key={reader.id} onClick={ () => {handleReaderTrack(reader)} } className="list">
-              <h3>Reader: {reader.reader_name}</h3>
+          <li key={reader.id} onClick={ () => {handleReaderTrack(reader)} } className="list">
+            
+            <Card className={classes.root}>
+            <CardActionArea>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                Reader: {reader.reader_name}
+                </Typography>
+                <Typography gutterBottom variant="h5" component="h2">
+                Total Books to Read: {reader.goal}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                Grand Prize: {reader.reward}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            </Card>
+
+              {/* <h3>Reader: {reader.reader_name}</h3>
               <p>Total Books to Read: {reader.goal}</p>
-              <p>Grand Prize: {reader.reward}</p>
+              <p>Grand Prize: {reader.reward}</p> */}
             </li>
           )
         })}

@@ -31,13 +31,13 @@ function BookSearch() {
 
     return (
         <div className="container">
-            <Button variant="outlined" onClick={ () => {history.goBack()}}>Back</Button>
+            <Button variant="contained" color="primary" onClick={ () => {history.goBack()}}>Back</Button>
             <h1>Book Search</h1>
 
 
             <form onSubmit={handleSubmit}>
                 <input onChange={handleChange} value={searchQuery} lable="Search for books" />
-                <Button type="submit" variant="outlined">Submit Search</Button>
+                <Button type="submit" variant="contained" color="secondary">Submit Search</Button>
             </form>
             <main >
                 <h3>SEARCH RESULTS</h3>
