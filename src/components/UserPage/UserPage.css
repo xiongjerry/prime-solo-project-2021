@@ -1,0 +1,11 @@
+.list {
+    margin: 2em;
+    display: inline-block;
+    flex: auto;
+    border: 3px solid black;
+    height: 250px; width: 250px;
+}
+
+p {
+    margin: 15px;
+}

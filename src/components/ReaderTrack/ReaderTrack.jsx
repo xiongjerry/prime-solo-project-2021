@@ -99,10 +99,10 @@ function ReaderTrack() {
 
     return (
         <div className="container">
-            <h2>{name}'s Track</h2>
+            <h1>{name}'s Track</h1>
 
-            <h3>Goal: {goal}</h3>
-            <h3>Reward: {reward}</h3>
+            <h2>Goal: {goal}</h2>
+            <h2>Reward: {reward}</h2>
 
 
             <main>
@@ -111,6 +111,7 @@ function ReaderTrack() {
                     value="EDIT READER INFO"
                     onClick={toggleEditForm}
                 />
+                
                 {isPopupOpen && <EditReaderForm
                     content={<>
                         <b>Edit Reader Stats</b>
@@ -123,6 +124,7 @@ function ReaderTrack() {
                                 variant="outlined"
                                 value={newName}
                                 onChange={handleChangeName}
+                                color="primary"
                             />
 
                             <TextField
@@ -134,6 +136,7 @@ function ReaderTrack() {
                                 }}
                                 variant="filled"
                                 onChange={handleChangeGoal}
+                                color="primary"
                             />
 
                             <TextField
@@ -142,9 +145,10 @@ function ReaderTrack() {
                                 variant="outlined"
                                 value={newReward}
                                 onChange={handleChangeReward}
+                                color="primary"
                             />
 
-                            <Button type="submit" variant="outlined">Submit Changes</Button>
+                            <Button type="submit" variant="outlined" color="secondary">Submit Changes</Button>
                         </form>
 
                     </>}
@@ -154,11 +158,7 @@ function ReaderTrack() {
             </main>
 
             <div>
-                <p>GOAL PROGRESS BAR</p>
-            </div>
-
-            <div>
-                <BookList readerId={readerId} />
+                <BookList readerId={readerId} goal={goal} />
 
                 <Button onClick={() => {history.push('/bookSearch')}} variant="outlined">Look For a Book!</Button>
             </div>
